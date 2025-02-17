@@ -4,11 +4,23 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LeadController;
+use App\Http\Controllers\ApplicationController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
 
+Route::middleware('auth:api')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::get('profile', [AuthController::class, 'profile']);
+
+    // Lead Routes
+    Route::post('leads/assign', [LeadController::class, 'assignLead']);
+    Route::patch('leads/{id}', [LeadController::class, 'updateLeadStatus']);
+
+    // Application Routes
+    Route::patch('applications/{id}', [ApplicationController::class, 'updateApplicationStatus']);
+});
 
 // // Authentication Routes
 // Route::post('login', [AuthController::class, 'login']);
@@ -34,14 +46,14 @@ Route::get('test', function () {
 
 
 
-Route::controller(AuthController::class)->group(function () {
-    Route::post('login', 'login');
-    Route::post('register', 'register');
-    Route::post('logout', 'logout');
-    Route::post('refresh', 'refresh');
+// Route::controller(AuthController::class)->group(function () {
+//     Route::post('login', 'login');
+//     Route::post('register', 'register');
+//     Route::post('logout', 'logout');
+//     Route::post('refresh', 'refresh');
 
-});
+// });
 
-Route::controller(LeadController::class)->group(function () {
-    Route::post('store', 'store');
-}); 
+// Route::controller(LeadController::class)->group(function () {
+//     Route::post('store', 'store');
+// }); 
