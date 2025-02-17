@@ -147,7 +147,7 @@ php artisan serve
 ### **Lead Management**
 #### **Lead Creation**
 - **Endpoint:** `POST /api/store`
-- **Description:** Inserts new lead based JWT and role based authentication
+- **Description:** Inserts new lead based on JWT and role based authentication
 
 ##### **Request Body (JSON)**
 ```json
@@ -178,6 +178,17 @@ php artisan serve
 }
 
 ```
+
+## ✅ Total Leads Assigned to Each Counselor
+
+SELECT u.id AS counselor_id, 
+       u.name AS counselor_name, 
+       COUNT(l.id) AS total_leads
+FROM users u
+LEFT JOIN leads l ON u.id = l.assigned_to
+WHERE u.role = 'counselor'
+GROUP BY u.id, u.name
+ORDER BY total_leads DESC;
 
 
 
