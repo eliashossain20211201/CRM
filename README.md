@@ -144,6 +144,42 @@ php artisan serve
 
 ```
 
+### **Lead Management**
+#### **Lead Creation**
+- **Endpoint:** `POST /api/store`
+- **Description:** Inserts new lead based JWT and role based authentication
+
+##### **Request Body (JSON)**
+```json
+{
+  "name": "Lead 3",
+  "contact_number": "01973111113",
+  "email": "lead3@example.com",
+  "status": "new",
+  "assigned_to": "1"
+}
+```
+
+##### **Response(JSON)**
+```json
+{
+    "status": "success",
+    "message": "Lead created successfully",
+    "lead": {
+        "name": "Lead 3",
+        "contact_number": "01973111113",
+        "email": "lead3@example.com",
+        "status": "new",
+        "assigned_to": "1",
+        "updated_at": "2025-02-17T12:39:33.000000Z",
+        "created_at": "2025-02-17T12:39:33.000000Z",
+        "id": 6
+    }
+}
+
+```
+
+
 
 
 
