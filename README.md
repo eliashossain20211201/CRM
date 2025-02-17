@@ -64,7 +64,9 @@ A function to find the most active counselor who has processed the most applicat
   "email": "admin@example.com",
   "password": "hashed_password"
 }
+```
+#### **Login**
+- **Endpoint:** `POST /api/login`
+- **Description:** Logs in the user and returns a JWT token.
 
-## Usage
-- Example of how to use the project.
 
