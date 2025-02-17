@@ -7,8 +7,8 @@ A mini CRM system where:
 - If any lead is interested and move forward with their application, Our counsellor would have the ability to move them to application section.
 - In application section, assigned counsellor will select application status like "In Progress", "Approved", and "Rejection" according to the situation.
 
-### Requirements:
-Backend (Laravel, MySQL):
+## Requirements:
+### Backend (Laravel, MySQL):
 - Implement JWT-based authentication with role-based access (Admin, Counselor).  
 - Develop API endpoints for managing Leads, Assignments, and Applications.  
  
