@@ -244,27 +244,34 @@ echo getMostActiveCounselor();
 
 ### Installation
 
-**Prerequisites**
-Ensure you have the following installed before proceeding:
-Node.js (v16 or later)
-npm (comes with Node.js)
-Vue CLI (Globally installed)
+#### **Prerequisites**
 
-**Setup Steps**
-- Clone the Repository
+Ensure you have the following installed before proceeding:
+- Node.js (v16 or later)
+- npm (comes with Node.js)
+- Vue CLI (Globally installed)
+
+#### **Setup Steps**
+
+**Clone the Repository**
+
 ```sh
 git clone https://github.com/eliashossain20211201/CRM.git
 cd CRM\crmfrontend
 ```
-- Install Vue CLI globally (if not installed)
+
+**Install Vue CLI globally (if not installed)**
+
 	npm install -g @vue/cli
 
-- Install dependencies
+**Install dependencies**
+
 	npm install axios vuex vue-router vue-draggable-next
 
-- Laravel Backend Integration
+**Laravel Backend Integration**
 
-Modify axios.js and Adjust this URL for your backend
+Modify axios.js and Adjust this URL for your backend:
+
 axios.defaults.baseURL = 'http://localhost:8000/api';  
 
 Modify index.js inside store directory with the following:
