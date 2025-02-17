@@ -214,8 +214,51 @@ HAVING total_leads > 0
 ORDER BY conversion_rate DESC;
 ```
 
+## DSA Task (PHP)
+
+### SQL Query:
+
+```sql
+SELECT processed_by AS counselor_id, 
+       COUNT(id) AS total_applications 
+FROM applications 
+WHERE processed_at >= NOW() - INTERVAL 30 DAY
+GROUP BY processed_by 
+ORDER BY total_applications DESC 
+LIMIT 1;
+
+```
 
 
+### PHP Function:
 
+```php
+function getMostActiveCounselor() {
+    // Database connection
+    $pdo = new PDO("mysql:host=localhost;dbname=crmbhe", "root", "");
 
+    // SQL Query
+    $sql = "SELECT processed_by AS counselor_id, 
+                   COUNT(id) AS total_applications 
+            FROM applications 
+            WHERE processed_at >= NOW() - INTERVAL 30 DAY
+            GROUP BY processed_by 
+            ORDER BY total_applications DESC 
+            LIMIT 1";
+
+    // Execute the query
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($result) {
+        return "Most Active Counselor: ID " . $result['counselor_id'] . " with " . $result['total_applications'] . " applications processed.";
+    } else {
+        return "No applications processed in the last 30 days.";
+    }
+}
+
+// Example usage
+echo getMostActiveCounselor();
+```
 
