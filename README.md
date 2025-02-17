@@ -35,8 +35,8 @@ A function to find the most active counselor who has processed the most applicat
 3. Run the project.
 
 ## API Documentation
-- **GET /api/users**: Fetches the list of users.
-- **POST /api/users**: Creates a new user.
+- **GET /api/leads**: Fetches the list of leads available.
+- **POST /api/register**: Creates a new user. Admin or counselor.
 
 ## Usage
 - Example of how to use the project.
