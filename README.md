@@ -46,6 +46,24 @@ A function to find the most active counselor who has processed the most applicat
 
 - **GET /api/leads**: Fetches the list of leads available.
 
+## API Documentation
+
+### **User Authentication**
+
+#### **Register a New User**
+- **Endpoint:** `POST /api/register`
+- **Description:** Creates a new user (Admin or Counselor).
+
+#### **Login**
+- **Endpoint:** `POST /api/login`
+- **Description:** Logs in the user and returns a JWT token.
+
+##### **Request Body (JSON)**
+```json
+{
+  "email": "admin@example.com",
+  "password": "hashed_password"
+}
 
 ## Usage
 - Example of how to use the project.
