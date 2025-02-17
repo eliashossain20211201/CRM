@@ -26,7 +26,6 @@ A function to find the most active counselor who has processed the most applicat
 
 
 ## Installation
-### Prerequisites
 
 ### **Prerequisites**  
 Ensure your system meets the following requirements before installation:  
@@ -34,9 +33,10 @@ Ensure your system meets the following requirements before installation:
 - **Composer** (PHP dependency manager)  
 - **Laravel 10+**  
 - **MySQL 8+** or **MariaDB 10.6+**  
-- **Apache
+- **Apache**
 
-### **Step 1: Clone the Repository**  
+### **Setup Steps**
+**Step 1: Clone the Repository**  
 ```sh
 git clone https://github.com/eliashossain20211201/CRM.git
 cd CRM
@@ -72,12 +72,6 @@ php artisan jwt:secret
 ```sh
 php artisan serve
 ```
-
-
-### Setup
-1. Clone the repository.
-2. Install dependencies.
-3. Run the project.
 
 
 ## API Documentation
@@ -129,8 +123,29 @@ php artisan serve
   "password": "hashed_password"
 }
 ```
-#### **Login**
-- **Endpoint:** `POST /api/login`
-- **Description:** Logs in the user and returns a JWT token.
+
+##### **Response(JSON)**
+```json
+{
+    "status": "success",
+    "user": {
+        "id": 1,
+        "name": "elias hossain",
+        "email": "admin@example.com",
+        "role": "admin",
+        "created_at": "2025-02-16T13:23:16.000000Z",
+        "updated_at": "2025-02-16T13:23:16.000000Z"
+    },
+    "authorisation": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL2xvZ2luIiwiaWF0IjoxNzM5NzgwNDcxLCJleHAiOjE3Mzk3ODQwNzEsIm5iZiI6MTczOTc4MDQ3MSwianRpIjoicGg4Q0xWbmZYcmdUR3ZwSyIsInN1YiI6IjEiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.i6T8g2AzN5AvLbC7n0maWCkMfD9z8Ovo4hWOBEikIr8",
+        "type": "bearer"
+    }
+}
+
+```
+
+
+
+
 
 
