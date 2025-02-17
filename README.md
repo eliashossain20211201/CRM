@@ -27,24 +27,58 @@ A function to find the most active counselor who has processed the most applicat
 
 ## Installation
 ### Prerequisites
-- List any dependencies or software (e.g., Node.js, Python).
+
+### **Prerequisites**  
+Ensure your system meets the following requirements before installation:  
+- **PHP 8.1+**  
+- **Composer** (PHP dependency manager)  
+- **Laravel 10+**  
+- **MySQL 8+** or **MariaDB 10.6+**  
+- **Apache
+
+### **Step 1: Clone the Repository**  
+```sh
+git clone https://github.com/your-username/your-crm-project.git
+cd your-crm-project
+```
+**Step 2: Install PHP Dependencies**  
+```sh
+composer install
+```
+**Step 3: Set Up Environment Variables**  
+```sh
+cp .env.example .env
+```
+**Step 4: Generate App Key**  
+```sh
+php artisan key:generate
+```
+
+**Step 5: Run Migrations & Seed Database**  
+```sh
+php artisan migrate --seed
+
+```
+
+**Step 6: Install JWT Authentication**  
+```sh
+composer require php-open-source-saver/jwt-auth
+php artisan vendor:publish --provider="PHPOpenSourceSaver\JWTAuth\Providers\LaravelServiceProvider"
+php artisan jwt:secret
+
+```
+
+**Step 7: Start the Development Server**  
+```sh
+php artisan serve
+```
+
 
 ### Setup
 1. Clone the repository.
 2. Install dependencies.
 3. Run the project.
 
-## API Documentation
-
-- **POST /api/register**: Creates a new user. Admin or counselor.
-- **POST /api/login**: Login and get JWT Token.
-#### Body raw (json)
-{
-  "email": "admin@example.com",
-  "password": "hashed_password"
-}
-
-- **GET /api/leads**: Fetches the list of leads available.
 
 ## API Documentation
 
