@@ -40,7 +40,7 @@ export default {
     onDrop(status, lead) {
       if (this.draggedLead && this.draggedLead.id !== lead.id) {
         // If the lead is dragged to another status
-        axios.put(`http://localhost/api/leads/${this.draggedLead.id}`, {
+        axios.put(`http://localhost:8000/api/leads/${this.draggedLead.id}`, {
           status: status,
         }).then(() => {
           this.$emit('status-updated');  // Notify parent component

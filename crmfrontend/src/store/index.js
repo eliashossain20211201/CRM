@@ -25,25 +25,25 @@ export default createStore({
   },
   actions: {
     fetchLeads({ commit }) {
-      axios.get('http://localhost/api/leads') // Change this to your backend endpoint
+      axios.get('http://localhost:8000/api/leads') // Change this to your backend endpoint
         .then(response => {
           commit('setLeads', response.data);
         });
     },
     fetchApplications({ commit }) {
-      axios.get('http://localhost/api/applications') // Change this to your backend endpoint
+      axios.get('http://localhost:8000/api/applications') // Change this to your backend endpoint
         .then(response => {
           commit('setApplications', response.data);
         });
     },
     fetchCounselors({ commit }) {
-      axios.get('http://localhost/api/counselors') // Change this to your backend endpoint
+      axios.get('http://localhost:8000/api/counselors') // Change this to your backend endpoint
         .then(response => {
           commit('setCounselors', response.data);
         });
     },
     fetchCurrentUser({ commit }) {
-      axios.get('http://localhost/api/user') // Change this to your backend endpoint
+      axios.get('http://localhost:8000/api/user') // Change this to your backend endpoint
         .then(response => {
           commit('setCurrentUser', response.data);
         });

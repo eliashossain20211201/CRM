@@ -16,7 +16,7 @@ Ensure your system meets the following requirements before installation:
 **Step 1: Clone the Repository**  
 ```sh
 git clone https://github.com/eliashossain20211201/CRM.git
-cd CRM
+cd CRM\crmbhe
 ```
 **Step 2: Install PHP Dependencies**  
 ```sh
@@ -238,4 +238,65 @@ function getMostActiveCounselor() {
 // Example usage
 echo getMostActiveCounselor();
 ```
+
+
+## Vue.js Frontend - CRM System
+
+### Installation
+
+**Prerequisites**
+Ensure you have the following installed before proceeding:
+Node.js (v16 or later)
+npm (comes with Node.js)
+Vue CLI (Globally installed)
+
+**Setup Steps**
+- Clone the Repository
+```sh
+git clone https://github.com/eliashossain20211201/CRM.git
+cd CRM\crmfrontend
+```
+- Install Vue CLI globally (if not installed)
+	npm install -g @vue/cli
+
+- Install dependencies
+	npm install axios vuex vue-router vue-draggable-next
+
+- Laravel Backend Integration
+
+Modify axios.js and Adjust this URL for your backend
+axios.defaults.baseURL = 'http://localhost:8000/api';  
+
+Modify index.js inside store directory with the following:
+
+```js
+  actions: {
+    fetchLeads({ commit }) {
+      axios.get('http://localhost:8000/api/leads') // Change this to your backend endpoint
+        .then(response => {
+          commit('setLeads', response.data);
+        });
+    },
+    fetchApplications({ commit }) {
+      axios.get('http://localhost:8000/api/applications') // Change this to your backend endpoint
+        .then(response => {
+          commit('setApplications', response.data);
+        });
+    },
+    fetchCounselors({ commit }) {
+      axios.get('http://localhost:8000/api/counselors') // Change this to your backend endpoint
+        .then(response => {
+          commit('setCounselors', response.data);
+        });
+    },
+    fetchCurrentUser({ commit }) {
+      axios.get('http://localhost:8000/api/user') // Change this to your backend endpoint
+        .then(response => {
+          commit('setCurrentUser', response.data);
+        });
+    },
+  },
+```
+- Run the development server
+	npm run serve
 

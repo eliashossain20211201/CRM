@@ -1,19 +1,3 @@
-/* import Vue from 'vue';
-import App from './App.vue';
-import store from './store';
-import router from './router';
-import axios from './axios';  // Axios configuration
-
-axios.defaults.baseURL = 'http://your-api-url.com';
-
-Vue.config.productionTip = false;
-
-new Vue({
-  store,
-  router,
-  render: h => h(App),
-}).$mount('#app');
- */
 // src/main.js
 import { createApp } from 'vue';  // Use 'createApp' for Vue 3
 import App from './App.vue';
