@@ -37,6 +37,9 @@ A function to find the most active counselor who has processed the most applicat
 ## API Documentation
 https://private-user-images.githubusercontent.com/119109348/413774371-40035d64-ef2f-43dd-9cef-30931cbeeecd.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mzk3ODEzMTAsIm5iZiI6MTczOTc4MTAxMCwicGF0aCI6Ii8xMTkxMDkzNDgvNDEzNzc0MzcxLTQwMDM1ZDY0LWVmMmYtNDNkZC05Y2VmLTMwOTMxY2JlZWVjZC5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjUwMjE3JTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI1MDIxN1QwODMwMTBaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT1lYThjNmU1NTUwYWMyMjVmZmQzYjYwMzZlOWFiYjgzYjMyYmFkMjg2YjNlZjM1Y2ZhNzdkOTRkOGY1MzczNGI3JlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.-5Eb0Z64q1HMYaW4wwkfePrzc2A1KlD6D6CtQ1B10Pg
 
+
+https://github.com/eliashossain20211201/CRM/issues/1#issuecomment-2662383604
+
 - **GET /api/leads**: Fetches the list of leads available.
 - **POST /api/register**: Creates a new user. Admin or counselor.
 
