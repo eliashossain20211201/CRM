@@ -1,4 +1,4 @@
-# Project MINI CRM System
+# Project mini CRM System
 
 ## Overview
 A mini CRM system where:  
