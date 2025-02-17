@@ -38,8 +38,8 @@ Ensure your system meets the following requirements before installation:
 
 ### **Step 1: Clone the Repository**  
 ```sh
-git clone https://github.com/your-username/your-crm-project.git
-cd your-crm-project
+git clone https://github.com/eliashossain20211201/CRM.git
+cd CRM
 ```
 **Step 2: Install PHP Dependencies**  
 ```sh
