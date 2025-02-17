@@ -54,6 +54,36 @@ A function to find the most active counselor who has processed the most applicat
 - **Endpoint:** `POST /api/register`
 - **Description:** Creates a new user (Admin or Counselor).
 
+##### **Request Body (JSON)**
+```json
+{
+  "name": "counselor E",
+  "email": "E@example.com",
+  "password": "hashed_password",
+  "role": "counselor"
+}
+```
+
+##### **Response(JSON)**
+```json
+{
+    "status": "success",
+    "message": "User created successfully",
+    "user": {
+        "name": "counselor E",
+        "email": "E@example.com",
+        "role": "counselor",
+        "updated_at": "2025-02-17T08:18:05.000000Z",
+        "created_at": "2025-02-17T08:18:05.000000Z",
+        "id": 6
+    },
+    "authorisation": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvYXBpL3JlZ2lzdGVyIiwiaWF0IjoxNzM5NzgwMjg3LCJleHAiOjE3Mzk3ODM4ODcsIm5iZiI6MTczOTc4MDI4NywianRpIjoiT1laYTRyYVhYQ3BQcEN6diIsInN1YiI6IjYiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.0cCcgezb0uVJh8OyJyysD5P_wZRDztUh7Sltwq_zzUg",
+        "type": "bearer"
+    }
+}
+```
+
 #### **Login**
 - **Endpoint:** `POST /api/login`
 - **Description:** Logs in the user and returns a JWT token.
