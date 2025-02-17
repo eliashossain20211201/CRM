@@ -180,7 +180,7 @@ php artisan serve
 ```
 
 ## ✅ Total Leads Assigned to Each Counselor
-
+```sql
 SELECT u.id AS counselor_id, 
        u.name AS counselor_name, 
        COUNT(l.id) AS total_leads
@@ -189,7 +189,30 @@ LEFT JOIN leads l ON u.id = l.assigned_to
 WHERE u.role = 'counselor'
 GROUP BY u.id, u.name
 ORDER BY total_leads DESC;
+```
 
+
+
+## ✅ Counselors with the Highest Lead Conversion Rates
+
+Assuming status = 'converted' means a lead was successfully closed.
+
+```sql
+SELECT u.id AS counselor_id, 
+       u.name AS counselor_name, 
+       COUNT(CASE WHEN l.status = 'converted' THEN 1 END) AS converted_leads,
+       COUNT(l.id) AS total_leads,
+       ROUND(
+           (COUNT(CASE WHEN l.status = 'converted' THEN 1 END) / COUNT(l.id)) * 100, 
+           2
+       ) AS conversion_rate
+FROM users u
+LEFT JOIN leads l ON u.id = l.assigned_to
+WHERE u.role = 'counselor'
+GROUP BY u.id, u.name
+HAVING total_leads > 0
+ORDER BY conversion_rate DESC;
+```
 
 
 
