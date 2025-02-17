@@ -242,16 +242,14 @@ echo getMostActiveCounselor();
 
 ## Vue.js Frontend - CRM System
 
-### Installation
-
-#### **Prerequisites**
+### **Prerequisites**
 
 Ensure you have the following installed before proceeding:
 - Node.js (v16 or later)
 - npm (comes with Node.js)
 - Vue CLI (Globally installed)
 
-#### **Setup Steps**
+### **Setup Steps**
 
 **Clone the Repository**
 
@@ -270,11 +268,11 @@ cd CRM\crmfrontend
 
 **Laravel Backend Integration**
 
-Modify axios.js and Adjust this URL for your backend:
+- Modify axios.js and Adjust this URL for your backend:
 
 axios.defaults.baseURL = 'http://localhost:8000/api';  
 
-Modify index.js inside store directory with the following:
+- Modify index.js inside store directory with the following:
 
 ```js
   actions: {
@@ -304,6 +302,6 @@ Modify index.js inside store directory with the following:
     },
   },
 ```
-- Run the development server
+#### **Run the development server**
 	npm run serve
 
