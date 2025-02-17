@@ -1,0 +1,29 @@
+<?php
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LeadController;
+use App\Http\Controllers\AssignmentController;
+use App\Http\Controllers\ApplicationController;
+
+// Authentication Routes
+Route::post('login', [AuthController::class, 'login']);
+
+// Protected routes
+Route::middleware('jwt.auth')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+    Route::get('user', [AuthController::class, 'getUser']);
+    
+    // Lead Routes (Admin Only)
+    Route::resource('leads', LeadController::class);
+
+    // Assignments Routes (Admin Only)
+    Route::post('assign-lead/{lead}', [AssignmentController::class, 'assignLead']);
+
+    // Application Routes (Counselors)
+    Route::resource('applications', ApplicationController::class);
+});
+
+Route::get('test', function () {
+    return response()->json(['message' => 'API is working!']);
+});
