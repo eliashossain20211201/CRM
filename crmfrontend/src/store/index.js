@@ -25,7 +25,7 @@ export default createStore({
   },
   actions: {
     fetchLeads({ commit }) {
-      axios.get('http://localhost:8000/api/leads') // Change this to your backend endpoint
+      axios.get('http://localhost:8000/api/leads') 
         .then(response => {
           commit('setLeads', response.data);
         });

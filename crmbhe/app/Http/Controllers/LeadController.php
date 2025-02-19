@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Lead;
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Log;
+
 
 
 class LeadController extends Controller
@@ -14,11 +16,17 @@ class LeadController extends Controller
     {
 
         // Apply JWT authentication to all methods
-        // $this->middleware('auth:api');
-        $this->middleware('jwt.auth');
+         $this->middleware('auth:api');
+       // $this->middleware('jwt.auth');
         
     }
 
+    public function leads()
+    {
+        Log::info('Leads function was called.');
+       // dd('Leads function reached');
+        return Lead::all();  // For simplicity, returning all leads.
+    }
     /**
      * Create a new lead (Admin only)
      */

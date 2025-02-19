@@ -10,8 +10,8 @@ Route::post('register', [AuthController::class, 'register']);
 Route::post('login', [AuthController::class, 'login']);
 
 Route::middleware('auth:api')->group(function () {
-
     // Lead Routes
+    Route::get('leads', [LeadController::class, 'leads']); 
     Route::post('store', [LeadController::class, 'store']);    
     Route::post('leads/assign', [LeadController::class, 'assignLead']);
     Route::patch('leads/{id}', [LeadController::class, 'updateLeadStatus']);
