@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth;
 use PHPOpenSourceSaver\JWTAuth\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class AuthController extends Controller
 {
@@ -71,5 +72,15 @@ class AuthController extends Controller
             ]
         ]);
     }
+
+    public function counselors()
+    {
+        Log::info('counselors function was called.');
+        
+        // Fetch only users with role 'counselor'
+        $counselors = User::where('role', 'counselor')->get();
+        return response()->json($counselors);        
+    }
+
 
 }

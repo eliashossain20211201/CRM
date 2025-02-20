@@ -24,9 +24,18 @@ class LeadController extends Controller
     public function leads()
     {
         Log::info('Leads function was called.');
-       // dd('Leads function reached');
         return Lead::all();  // For simplicity, returning all leads.
     }
+    
+    public function unassignedLeads()
+    {
+        Log::info('Unassigned leads function was called.');
+        
+        // Fetch leads where status is 'new'
+        $unassignedLeads = Lead::where('status', 'new')->get();
+
+        return response()->json($unassignedLeads);
+    }    
     /**
      * Create a new lead (Admin only)
      */
@@ -60,14 +69,14 @@ class LeadController extends Controller
         ], 201);
     }
 
-    public function assignLead(Request $request)
-    {
-        $lead = Lead::findOrFail($request->lead_id);
-        $lead->counselor_id = $request->counselor_id;
-        $lead->save();
+    // public function assignLead(Request $request)
+    // {
+    //     $lead = Lead::findOrFail($request->lead_id);
+    //     $lead->counselor_id = $request->counselor_id;
+    //     $lead->save();
 
-        return response()->json(['message' => 'Lead assigned successfully']);
-    }
+    //     return response()->json(['message' => 'Lead assigned successfully']);
+    // }
 
     public function updateLeadStatus(Request $request, $id)
     {
