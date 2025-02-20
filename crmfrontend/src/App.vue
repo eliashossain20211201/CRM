@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <header>
-      <h1>CRM Dashboard</h1>
+      <h1>Mini CRM System</h1>
     </header>
     <main>
       <router-view></router-view>
