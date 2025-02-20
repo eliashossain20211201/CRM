@@ -5,9 +5,9 @@ export default createStore({
   state: {
     leads: [],
     applications: [],
-    counselors: [],
     currentUser: null,
-    authToken: localStorage.getItem('auth_token') || null, // Get token from localStorage
+    authToken: localStorage.getItem('auth_token') || null,
+    userRole: localStorage.getItem('user_role') || null,
   },
   mutations: {
     setLeads(state, leads) {
@@ -16,29 +16,38 @@ export default createStore({
     setApplications(state, applications) {
       state.applications = applications;
     },
-    setCounselors(state, counselors) {
-      state.counselors = counselors;
-    },
     setCurrentUser(state, user) {
       state.currentUser = user;
     },
     setAuthToken(state, token) {
       state.authToken = token;
-      localStorage.setItem('auth_token', token); // Save token in localStorage
+      localStorage.setItem('auth_token', token);
+    },
+    setUserRole(state, role) {
+      state.userRole = role;
+      localStorage.setItem('user_role', role);
     },
     clearAuthToken(state) {
       state.authToken = null;
-      localStorage.removeItem('auth_token'); // Remove token from localStorage
+      state.userRole = null;
+      localStorage.removeItem('auth_token');
+      localStorage.removeItem('user_role');
     },
   },
   actions: {
+    login({ commit }, { token, role }) {
+      commit('setAuthToken', token);
+      commit('setUserRole', role);
+    },
+    logout({ commit }) {
+      commit('clearAuthToken');
+    },
     fetchLeads({ commit, state }) {
       axios.get('http://localhost:8000/api/leads', {
         headers: {
           Authorization: `Bearer ${state.authToken}`,
         },
-      })
-      .then(response => {
+      }).then(response => {
         commit('setLeads', response.data);
       });
     },
@@ -47,19 +56,8 @@ export default createStore({
         headers: {
           Authorization: `Bearer ${state.authToken}`,
         },
-      })
-      .then(response => {
+      }).then(response => {
         commit('setApplications', response.data);
-      });
-    },
-    fetchCounselors({ commit, state }) {
-      axios.get('http://localhost:8000/api/counselors', {
-        headers: {
-          Authorization: `Bearer ${state.authToken}`,
-        },
-      })
-      .then(response => {
-        commit('setCounselors', response.data);
       });
     },
     fetchCurrentUser({ commit, state }) {
@@ -67,23 +65,15 @@ export default createStore({
         headers: {
           Authorization: `Bearer ${state.authToken}`,
         },
-      })
-      .then(response => {
+      }).then(response => {
         commit('setCurrentUser', response.data);
       });
-    },
-    login({ commit }, token) {
-      commit('setAuthToken', token); // Save token to Vuex store and localStorage
-    },
-    logout({ commit }) {
-      commit('clearAuthToken'); // Clear token from Vuex store and localStorage
     },
   },
   getters: {
     leads: state => state.leads,
     applications: state => state.applications,
-    counselors: state => state.counselors,
     currentUser: state => state.currentUser,
-    isAuthenticated: state => !!state.authToken, // Check if the user is authenticated
+    isAuthenticated: state => !!state.authToken,
   },
 });

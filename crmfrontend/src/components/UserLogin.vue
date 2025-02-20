@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';  // Import ref from vue
+import { ref } from 'vue';
 import axios from 'axios';
 import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
@@ -20,6 +20,7 @@ export default {
     const router = useRouter();
     const email = ref('');
     const password = ref('');
+    const error = ref(null);
 
     const login = async () => {
       try {
@@ -29,41 +30,24 @@ export default {
         });
 
         const token = response.data?.authorisation?.token;
+        const userRole = response.data?.user?.role;
 
         if (token) {
-          store.dispatch('login', token); // Save token to Vuex store
-          router.push('/');  // Redirect to dashboard
+          store.dispatch('login', { token, role: userRole });
+          if (userRole === 'admin') {
+            router.push('/admin');
+          } else if (userRole === 'counselor') {
+            router.push('/counselor');
+          }
         } else {
-          alert('Login failed.');
+          error.value = 'Login failed. Please check your credentials.';
         }
-      } catch (error) {
-        console.error('Login failed:', error);
+      } catch (err) {
+        error.value = 'Login failed. Please try again later.';
       }
     };
 
-    return { email, password, login };
+    return { email, password, login, error };
   },
 };
 </script>
-
-<style scoped>
-/* Optional CSS styling */
-form {
-  max-width: 400px;
-  margin: auto;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  background-color: #42b983;
-  border: none;
-  color: white;
-}
-</style>
